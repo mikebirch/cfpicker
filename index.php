@@ -23,6 +23,8 @@ $tones = array(
   <link rel="stylesheet" type="text/css" href="css/colour.css">
 </head>
 <body>
+  <h1>cfpicker</h1>
+  <p>A handy colour picker for designing in the browser. Read the associated <a href="/blog/colour-picker-for-sass">blog post</a>.</p>
   <div class="wrapper">
   <?php foreach ($base_colours as $colour) : ?><?php foreach ($tones as $tone) : ?><div class="box <?php echo $colour.'-'.$tone ?>"><textarea>colour(<?php echo $colour ?>,<?php echo $tone ?>)</textarea></div><?php endforeach ?><?php endforeach ?>
 </div>
