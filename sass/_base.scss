@@ -33,8 +33,6 @@ $palette: (
   )
 );
 
-// not needed for index.php but handy for Sass development
-// 
 @function colour($colour, $tone: 'base') {
     @return map-get(map-get($palette, $colour), $tone);
 }
