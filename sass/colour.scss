@@ -1,0 +1,37 @@
+@import "base";
+
+@each $colour, $tones in $palette {
+  @each $tone, $value in $tones {
+    .#{$colour}-#{$tone} {
+      background-color: $value;
+    }
+  }
+}
+
+html {
+  font-size: 13px;
+}
+
+.wrapper {
+  max-width:950px;
+}
+
+.box {
+  width: 175px;
+  height: 175px;
+  display: inline-block;
+  margin: 0;
+}
+
+textarea {
+  color: #222;
+  background-color: rgba(255,255,255,.5);
+  border: none;
+  font-size: 1em;
+  line-height: 1.5;
+  height: 1.5em;
+  width: 100%;
+  overflow: hidden;
+  resize: none;
+  font-family: sans-serif;
+}

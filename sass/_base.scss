@@ -1,0 +1,45 @@
+// import compass
+@import "compass/utilities";
+@import "compass/css3";
+
+$palette: (
+  green: (
+    lightest: #6CCD93,
+    lighter:  #43B571,
+    base:     #26A65A,
+    darker:   #0F8D42,
+    darkest:  #02702F,
+  ),
+  lime: (
+    lightest: #B1EC7D,
+    lighter:  #96E153,
+    base:     #7ACE2F,
+    darker:   #5CB012,
+    darkest:  #438C03,
+  ),
+  fuschia: (
+    lightest: #EB7CA0,
+    lighter:  #E0527F,
+    base:     #CD2F61,
+    darker:   #AF1244,
+    darkest:  #8B032E,
+  ),
+  orange: (
+    lightest: #FF9E87,
+    lighter:  #FC7B5D,
+    base:     #E75735,
+    darker:   #C53614,
+    darkest:  #9C2103,
+  )
+);
+
+// not needed for index.php but handy for Sass development
+// 
+@function colour($colour, $tone: 'base') {
+    @return map-get(map-get($palette, $colour), $tone);
+}
+
+* { 
+   @include box-sizing(border-box);
+}
+
