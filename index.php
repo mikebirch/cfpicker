@@ -2,7 +2,7 @@
 $base_colours = array(
   'green',
   'lime',
-  'fuschia', 
+  'fuchsia', 
   'orange',
 );
 
