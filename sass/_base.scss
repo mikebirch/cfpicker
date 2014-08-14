@@ -3,41 +3,99 @@
 @import "compass/css3";
 
 $palette: (
-  green: (
-    lightest: #6CCD93,
-    lighter:  #43B571,
-    base:     #26A65A,
-    darker:   #0F8D42,
-    darkest:  #02702F,
+  green:      #26A65A,
+  lime:       #7ACE2F,
+  "fuchsia":  #CD2F61, // need to quote this because it's a named color in CSS https://github.com/sass/sass/issues/1256
+  orange:     #E75735,
+);
+
+$tones: (
+  light90: (
+    percent: 90,
+    tonetype: tint,
   ),
-  lime: (
-    lightest: #B1EC7D,
-    lighter:  #96E153,
-    base:     #7ACE2F,
-    darker:   #5CB012,
-    darkest:  #438C03,
+  light80: (
+    percent: 80,
+    tonetype: tint,
   ),
-  "fuchsia": (
-    lightest: #EB7CA0,
-    lighter:  #E0527F,
-    base:     #CD2F61,
-    darker:   #AF1244,
-    darkest:  #8B032E,
+  light70: (
+    percent: 70,
+    tonetype: tint,
   ),
-  orange: (
-    lightest: #FF9E87,
-    lighter:  #FC7B5D,
-    base:     #E75735,
-    darker:   #C53614,
-    darkest:  #9C2103,
-  )
+  light60: (
+    percent: 60,
+    tonetype: tint,
+  ),
+  light50: (
+    percent: 50,
+    tonetype: tint,
+  ),
+  light40: (
+    percent: 40,
+    tonetype: tint,
+  ),
+  light30: (
+    percent: 30,
+    tonetype: tint,
+  ),
+  light20: (
+    percent: 20,
+    tonetype: tint,
+  ),
+  light10: (
+    percent: 10,
+    tonetype: tint,
+  ),
+  dark10: (
+    percent: 10,
+    tonetype: shade,
+  ),
+  dark20: (
+    percent: 20,
+    tonetype: shade,
+  ),
+  dark30: (
+    percent: 30,
+    tonetype: shade,
+  ),
+  dark40: (
+    percent: 40,
+    tonetype: shade,
+  ),
+  dark50: (
+    percent: 50,
+    tonetype: shade,
+  ),
+  dark60: (
+    percent: 60,
+    tonetype: shade,
+  ),
+  dark70: (
+    percent: 70,
+    tonetype: shade,
+  ),
+  dark80: (
+    percent: 80,
+    tonetype: shade,
+  ),
+  dark90: (
+    percent: 90,
+    tonetype: shade,
+  ),
 );
 
 @function colour($colour, $tone: 'base') {
-    @return map-get(map-get($palette, $colour), $tone);
+  @if $tone == 'base' { 
+    @return map-get($palette, $colour); 
+  }
+  @if map-get(map-get($tones, $tone), 'tonetype') == 'tint' { 
+    @return tint(map-get($palette, $colour), map-get(map-get($tones, $tone), 'percent'));
+  }
+  @if map-get(map-get($tones, $tone), 'tonetype') == 'shade' { 
+    @return shade(map-get($palette, $colour), map-get(map-get($tones, $tone), 'percent'));
+  }
 }
 
 * { 
    @include box-sizing(border-box);
 }
-

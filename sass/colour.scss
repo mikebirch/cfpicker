@@ -1,10 +1,21 @@
 @import "base";
 
-@each $colour, $tones in $palette {
-  @each $tone, $value in $tones {
-    .#{$colour}-#{$tone} {
-      background-color: $value;
+@each $colour, $hex in $palette {
+  @each $key,$tone in $tones {
+    .#{$colour}-#{$key} {
+      @if map-get($tone, 'tonetype') == 'tint' {
+        background-color: tint($hex, map-get($tone, 'percent'));
+      }
+      @if map-get($tone, 'tonetype') == 'shade' {
+        background-color: shade($hex, map-get($tone, 'percent'));
+        textarea {
+          color: rgba(255,255,255,.8);
+        }
+      }     
     }
+  }
+  .#{$colour}-base {
+    background-color: $hex;
   }
 }
 
@@ -13,25 +24,42 @@ html {
   font-size: 100%;
 }
 
-.wrapper {
-  max-width:950px;
+.col {
+  width: 25%;
+  float: left;
 }
 
 .box {
-  width: 175px;
-  height: 175px;
-  display: inline-block;
-  margin: 0;
+  height: 4em;
+  position: relative;
+  border-color: transparent;
+}
+
+.active {
+  transition: all .3s ease-in;
+  transform: scale(1.05,1.05);
+  z-index: 10000;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+}
+
+div[class*='-base'] {
+  height: 6em;
 }
 
 textarea {
-  color: #222;
-  background-color: rgba(255,255,255,.5);
+  color: #000;
+  background-color: transparent;
   border: none;
   font: .8125em/1.5 sans-serif;
   height: 1.5em;
   width: 100%;
   overflow: hidden;
   resize: none;
-  
+  position: absolute;
+  transition: all .3s ease-in;
+}
+
+textarea:focus {
+  font-size: 1.2em;
+  outline: none;
 }
