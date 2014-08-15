@@ -46,7 +46,11 @@ $tones = array(
     <div class="col">
       <?php foreach ($tones as $tone) : ?>
       <div class="box <?php echo $colour.'-'.$tone ?>">
+        <?php if($tone == 'base'): ?>
+        <textarea>colour(<?php echo $colour ?>)</textarea>
+        <?php else: ?>
         <textarea>colour(<?php echo $colour ?>,<?php echo $tone ?>)</textarea>
+        <?php endif; ?>
       </div>
       <?php endforeach ?>
     </div>
