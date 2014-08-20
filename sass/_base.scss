@@ -2,99 +2,12 @@
 @import "compass/utilities";
 @import "compass/css3";
 
-$palette: (
-  green:      #26A65A,
-  lime:       #7ACE2F,
-  "fuchsia":  #CD2F61, // need to quote this because it's a named color in CSS https://github.com/sass/sass/issues/1256
-  orange:     #E75735,
+$palette: ( // configure matching variables in palette.php
+  c-green:      #26A65A,
+  c-lime:       #7ACE2F,
+  c-fuchsia:    #CD2F61,
+  c-orange:     #E75735,
 );
-
-$tones: (
-  light-90: (
-    percent: 90,
-    tonetype: tint,
-  ),
-  light-80: (
-    percent: 80,
-    tonetype: tint,
-  ),
-  light-70: (
-    percent: 70,
-    tonetype: tint,
-  ),
-  light-60: (
-    percent: 60,
-    tonetype: tint,
-  ),
-  light-50: (
-    percent: 50,
-    tonetype: tint,
-  ),
-  light-40: (
-    percent: 40,
-    tonetype: tint,
-  ),
-  light-30: (
-    percent: 30,
-    tonetype: tint,
-  ),
-  light-20: (
-    percent: 20,
-    tonetype: tint,
-  ),
-  light-10: (
-    percent: 10,
-    tonetype: tint,
-  ),
-  dark-10: (
-    percent: 10,
-    tonetype: shade,
-  ),
-  dark-20: (
-    percent: 20,
-    tonetype: shade,
-  ),
-  dark-30: (
-    percent: 30,
-    tonetype: shade,
-  ),
-  dark-40: (
-    percent: 40,
-    tonetype: shade,
-  ),
-  dark-50: (
-    percent: 50,
-    tonetype: shade,
-  ),
-  dark-60: (
-    percent: 60,
-    tonetype: shade,
-  ),
-  dark-70: (
-    percent: 70,
-    tonetype: shade,
-  ),
-  dark-80: (
-    percent: 80,
-    tonetype: shade,
-  ),
-  dark-90: (
-    percent: 90,
-    tonetype: shade,
-  ),
-);
-
-@function colour($colour, $tone: 'base') {
-  @if $tone == 'base' { 
-    @return map-get($palette, $colour); 
-  }
-  @if map-get(map-get($tones, $tone), 'tonetype') == 'tint' { 
-    @return tint(map-get($palette, $colour), map-get(map-get($tones, $tone), 'percent'));
-  }
-  @if map-get(map-get($tones, $tone), 'tonetype') == 'shade' { 
-    @return shade(map-get($palette, $colour), map-get(map-get($tones, $tone), 'percent'));
-  }
-}
 
 * { 
    @include box-sizing(border-box);

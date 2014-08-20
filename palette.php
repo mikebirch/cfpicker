@@ -1,32 +1,22 @@
 <?php
+
+/* 
+ *
+ * Configuration 
+ *
+ */
+
+ // set your base colour names and also in base.scss
 $base_colours = array(
-  'green',
-  'lime',
-  'fuchsia', 
-  'orange',
+  'c-green',
+  'c-lime',
+  'c-fuchsia', 
+  'c-orange',
 );
 
-$tones = array(
-  'light-90',
-  'light-80', 
-  'light-70',  
-  'light-60',
-  'light-50',
-  'light-40',
-  'light-30',
-  'light-20',  
-  'light-10',    
-  'base',            
-  'dark-10',     
-  'dark-20',
-  'dark-30',
-  'dark-40',
-  'dark-50',
-  'dark-60',
-  'dark-70',
-  'dark-80',
-  'dark-90',
-);
+// set the increment value here and also in colour.scss
+$increment = 1; 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,19 +32,25 @@ $tones = array(
   <p>Read the associated <a href="/blog/colour-picker-for-sass">blog post</a>.</p>
   <p>View on <a href="https://github.com/mikebirch/cfpicker">GitHub</a>.</p>
 
-    <?php foreach ($base_colours as $colour) : ?>
+   <?php foreach ($base_colours as $colour) : ?>
     <div class="col">
-      <?php foreach ($tones as $tone) : ?>
-      <div class="box <?php echo $colour.'-'.$tone ?>">
-        <?php if($tone == 'base'): ?>
-        <textarea>colour(<?php echo $colour ?>)</textarea>
-        <?php else: ?>
-        <textarea>colour(<?php echo $colour ?>,<?php echo $tone ?>)</textarea>
-        <?php endif; ?>
+    <?php for($i=(100/$increment)-1; $i>0; $i--): ?>
+      <?php $percentage = $i * $increment ?>
+      <div class="box <?php echo $colour.'-tint-'.$percentage ?>">
+        <textarea>tint(<?php echo $colour ?>,<?php echo $percentage ?>)</textarea>
       </div>
-      <?php endforeach ?>
+    <?php endfor; ?>
+    <div class="box <?php echo $colour.'-base' ?>">
+      <textarea><?php echo '$' . $colour ?></textarea>
     </div>
-    <?php endforeach ?> 
+    <?php for($i=1; $i<(100/$increment); $i++): ?>
+      <?php $percentage = $i * $increment ?>
+      <div class="box <?php echo $colour.'-shade-'.$percentage ?>">
+        <textarea>shade(<?php echo $colour ?>,<?php echo $percentage ?>)</textarea>
+      </div>
+    <?php endfor; ?>
+    </div>
+  <?php endforeach ?>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>

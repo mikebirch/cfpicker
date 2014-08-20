@@ -1,17 +1,30 @@
 @import "base";
 
+/*------------------------------------*\
+    #CONFIGURATION
+\*------------------------------------*/
+    
+// The increment value sets the percentages used by the tint and shade functions.
+// e.g. if $increment is 20, tint and shade will be calculated for these percentages: 20%, 40%, 60%, 80%
+// Set your increment value here and also in palette.php
+$increment: 5; 
+
+/*------------------------------------*\
+    #STYLES FOR PALETTE.PHP
+\*------------------------------------*/
+
 @each $colour, $hex in $palette {
-  @each $key,$tone in $tones {
-    .#{$colour}-#{$key} {
-      @if map-get($tone, 'tonetype') == 'tint' {
-        background-color: tint($hex, map-get($tone, 'percent'));
+  @for $i from 1 through (100/$increment)-1 {
+    $percentage: $i * $increment;
+    .#{$colour}-tint-#{$percentage} {
+      background-color: tint($hex, $percentage);
+    }
+    .#{$colour}-shade-#{$percentage} {
+      background-color: shade($hex, $percentage);
+      color: rgba(255,255,255,.8);
+      textarea {
+        color: inherit;
       }
-      @if map-get($tone, 'tonetype') == 'shade' {
-        background-color: shade($hex, map-get($tone, 'percent'));
-        textarea {
-          color: rgba(255,255,255,.8);
-        }
-      }     
     }
   }
   .#{$colour}-base {
@@ -22,6 +35,7 @@
 html {
   font-family: sans-serif;
   font-size: 100%;
+  color: #222;
 }
 
 .col {
@@ -33,6 +47,8 @@ html {
   height: 4em;
   position: relative;
   border-color: transparent;
+  font: .8125em/1.5 sans-serif;
+  padding: 1em;
 }
 
 .active {
@@ -47,10 +63,9 @@ div[class*='-base'] {
 }
 
 textarea {
-  color: #000;
   background-color: transparent;
   border: none;
-  font: .8125em/1.5 sans-serif;
+  font: 1em sans-serif;
   height: 1.5em;
   width: 100%;
   overflow: hidden;
