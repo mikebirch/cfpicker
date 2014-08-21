@@ -38,7 +38,7 @@ $increment = 5;
     <?php for($i=(100/$increment)-1; $i>0; $i--): ?>
       <?php $percentage = $i * $increment ?>
       <div class="box <?php echo $colour.'-tint-'.$percentage ?>">
-        <textarea>colour(<?php echo $colour ?>,tint,<?php echo $percentage ?>)</textarea>
+        <textarea>colour(<?php echo $colour ?>,tint,<?php echo $percentage ?>%)</textarea>
       </div>
     <?php endfor; ?>
     <div class="box <?php echo $colour.'-base' ?>">
@@ -47,7 +47,7 @@ $increment = 5;
     <?php for($i=1; $i<(100/$increment); $i++): ?>
       <?php $percentage = $i * $increment ?>
       <div class="box <?php echo $colour.'-shade-'.$percentage ?>">
-        <textarea>colour(<?php echo $colour ?>,shade,<?php echo $percentage ?>)</textarea>
+        <textarea>colour(<?php echo $colour ?>,shade,<?php echo $percentage ?>%)</textarea>
       </div>
     <?php endfor; ?>
     </div>
