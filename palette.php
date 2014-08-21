@@ -6,7 +6,8 @@
  *
  */
 
- // set your base colour names and also in base.scss
+// set your base colour names and also in base.scss
+// prepend with "c-" to avoid problems with named CSS colors https://github.com/sass/sass/issues/1256
 $base_colours = array(
   'c-green',
   'c-lime',

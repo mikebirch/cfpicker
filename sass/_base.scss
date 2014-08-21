@@ -2,7 +2,9 @@
 @import "compass/utilities";
 @import "compass/css3";
 
-$palette: ( // configure matching variables in palette.php
+// configure matching variables in palette.php
+// prepend with "c-" to avoid problems with named CSS colors https://github.com/sass/sass/issues/1256
+$palette: ( 
   c-green:      #26A65A,
   c-lime:       #7ACE2F,
   c-fuchsia:    #CD2F61,
