@@ -2,8 +2,8 @@ cfpicker
 ========
 
 A handy colour picker for designing in the browser with Sass.
-- View a range of tints and shades for colours in a palette.
-- Copy the code for the matching (tint or shade) Sass function.
+- View a range of tints and shades for colours in a palette
+- Copy the Sass code for the tint or shade you require.
 
 Requirements
 ------------
