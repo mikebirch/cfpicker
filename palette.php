@@ -42,7 +42,7 @@ $increment = 5;
       </div>
     <?php endfor; ?>
     <div class="box <?php echo $colour.'-base' ?>">
-      <textarea>colour(<?php echo $colour ?></textarea>
+      <textarea>colour(<?php echo $colour ?>)</textarea>
     </div>
     <?php for($i=1; $i<(100/$increment); $i++): ?>
       <?php $percentage = $i * $increment ?>
