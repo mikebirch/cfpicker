@@ -6,7 +6,7 @@ A handy colour picker for designing in the browser with Sass.
 To customise
 ------------
 
-- Edit the palette colours to base.scss and palette.php
+- Edit the palette colours in base.scss and palette.php
 - Set the increment value in colour.scss and palette.php
 
 Read the blog post:
