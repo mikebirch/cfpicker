@@ -15,7 +15,7 @@ $base_colours = array(
 );
 
 // set the increment value here and also in colour.scss
-$increment = 1; 
+$increment = 5; 
 
 ?>
 <!DOCTYPE html>
