@@ -11,6 +11,18 @@ $palette: (
   c-orange:     #E75735,
 );
 
+@function colour($colour, $tone: 'base', $percentage: NULL) {
+  @if $tone == 'tint' {
+    @return tint(map-get($palette, $colour), $percentage);
+  }
+  @if $tone == 'shade' {
+    @return shade(map-get($palette, $colour), $percentage);
+  }
+  @if $tone == 'base' {
+    @return map-get($palette, $colour);
+  }
+}
+
 * { 
    @include box-sizing(border-box);
 }
